@@ -1,0 +1,14 @@
+.ul_checkbox ul{
+    padding: 0;
+    margin: 0;
+}
+
+.ul_checkbox ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 25px;
+}
+
+.ul_checkbox ul li input {
+    margin-right: 5px;
+}

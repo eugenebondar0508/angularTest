@@ -1,0 +1,19 @@
+::ng-deep #gridContainer {
+    height: 440px;
+  }
+  
+  ::ng-deep #gridContainer .dx-datagrid-content tr.dx-data-row {
+    cursor: pointer;
+  }
+  
+  ::ng-deep .userInfo .userPhoto {
+    height: 140px;
+    float: left;
+    padding: 20px 20px 20px 0;
+  }
+  
+  ::ng-deep .userInfo .userNotes {
+    padding-top: 20px;
+    text-align: justify;
+    white-space: normal;
+  }

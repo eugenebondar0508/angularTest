@@ -1,0 +1,46 @@
+<app-checkbox (dataChanged)="dataChangeHandler($event)"></app-checkbox>
+
+<dx-data-grid *ngIf="userServices.withoutFilters" [dataSource]="userServices.dataSource" (onSelectionChanged)="selectionChanged($event)">
+
+    <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+
+    </dxo-search-panel>>
+
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-master-detail [enabled]="false" template="detail"></dxo-master-detail>
+
+    <dxo-paging [pageSize]="25">
+    </dxo-paging>
+
+    <dxi-column
+    dataField="picture.medium"
+    caption="Picture"
+    [allowFiltering]="false"
+    [allowSorting]="false"
+    cellTemplate="cellTemplate"
+  ></dxi-column>
+    <dxi-column dataField="name.first" caption="First Name"></dxi-column>
+    <dxi-column dataField="name.last" caption="Last Name"></dxi-column>
+    <dxi-column dataField="gender" caption="Gender"></dxi-column>
+    <dxi-column dataField="phone" caption="Phone"></dxi-column>
+
+    <div *dxTemplate="let data of 'cellTemplate'">
+        <img [src]="data.value" />
+    </div>
+
+    <div *dxTemplate="let user of 'detail'">
+        <div class="userInfo">
+          <p class="userNotes">{{ user.data.email }}</p>
+          <p class="userNotes">{{ user.data.location.street.name + ' ' +  user.data.location.street.number}}</p>
+          <p class="userNotes">{{ user.data.location.city}}</p>
+        </div>
+    </div>
+</dx-data-grid>
+
+<dx-data-grid *ngIf="!userServices.withoutFilters" [dataSource]="userServices.dataSource">
+  <dxi-column *ngIf="userServices.filters.gender" dataField="gender" caption="Gender"></dxi-column>
+  <dxi-column *ngIf="userServices.filters.phone" dataField="phone" caption="Phone"></dxi-column>
+  <dxi-column *ngIf="userServices.filters.email" dataField="email" caption="Email"></dxi-column>
+  <dxi-column *ngIf="userServices.filters.city" dataField="location.city" caption="City"></dxi-column>
+  <dxi-column *ngIf="userServices.filters.street" dataField="location.street.name" caption="Street"></dxi-column>
+</dx-data-grid>

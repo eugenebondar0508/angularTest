@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="ul_checkbox">
+        <ul>
+            <li *ngFor="let checkbox of checkboxArray">
+                <input type="{{ checkbox.type }}" [checked]="checkbox.checked" value="{{checkbox.name}}" (change)="onChange($event)"> {{ checkbox.name }}
+            </li>
+        </ul>
+    </div>
+</div>
